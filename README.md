@@ -1,75 +1,43 @@
-# React + TypeScript + Vite
+# Developer Portfolio 🖥️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio for **Umair Khan** (`123umair`) — a dark, terminal-inspired bento-grid portfolio built with React + TypeScript + Vite and Tailwind CSS.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Bento grid layout** — intro, credentials, and details sections animate in on scroll (IntersectionObserver)
+- **Projects grid with signal connectors** — each project card is wired to the grid's mid line; green signal pulses travel from project to project through the gaps
+- **Live project previews** — real screenshots of deployed apps, clicking a preview opens the live site
+- **"Coming soon" build animation** — unreleased projects get a build-in-progress panel: sweeping scan line, glowing COMING SOON, indeterminate progress bar and blinking terminal cursor
 
-## React Compiler
+## 🚀 Projects Shown
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Project | Stack | Status |
+| --- | --- | --- |
+| [WanderLust](https://wander-lust-fullstack.vercel.app/) | React · Node.js · Express · MongoDB | Live |
+| [Crazeations](https://crazeations-digital.vercel.app/) | React · TypeScript · Tailwind CSS | Live |
+| TradeNest | MERN (MongoDB · Express · React · Node.js) | 🚧 In Development |
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19 + TypeScript + Vite
+- Tailwind CSS 4
+- Custom keyframe animations (bento entrances, signal flow, scan line)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Run locally
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚢 Build for production
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run build
 ```
+
+Output is served from `dist/`.
+
+---
+
+Deployed on Vercel — add your project entries in [`src/projectsData/Projects.tsx`](src/projectsData/Projects.tsx).
