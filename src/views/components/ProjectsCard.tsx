@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Card } from './Card';
-import { projects } from '../projectsData/Projects';
-import type { Project } from '../projectsData/Projects';
+import { projects } from '../../models/projects';
+import type { Project } from '../../models/projects';
 
 interface ProjectCardProps {
   project: Project;

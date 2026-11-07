@@ -9,7 +9,7 @@ import { DeveloperProfile } from '../components/DeveloperProfile';
 import { StatsCard } from '../components/StatsCard';
 import { ExperienceTimeline } from '../components/ExperienceTimeline';
 import { Footer } from '../components/Footer';
-import { useBentoAnimation } from '../hooks/useBentoAnimation';
+import { useBentoAnimation } from '../../controllers/useBentoAnimation';
 
 export const Home: React.FC = () => {
   const introRef = useRef<HTMLElement>(null);
@@ -21,14 +21,17 @@ export const Home: React.FC = () => {
   useBentoAnimation(detailsRef);
 
   return (
-    <div className="bg-[#050505] min-h-screen text-white font-sans antialiased overflow-x-hidden selection:bg-[#10b981]/30 selection:text-white">
+    <div
+      id="top"
+      className="bg-[#050505] min-h-screen text-white font-sans antialiased overflow-x-hidden selection:bg-[#10b981]/30 selection:text-white"
+    >
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <Navbar />
 
         {/* AREA 1: Who I am + Terminal */}
         <section
           ref={introRef}
-          className="bento-grid grid grid-cols-1 md:grid-cols-4 gap-6 mt-6"
+          className="bento-grid grid grid-cols-1 md:grid-cols-4 gap-6 mt-6 scroll-mt-24"
         >
           <HeroCard />
           <CredentialsCard />
@@ -54,7 +57,7 @@ export const Home: React.FC = () => {
         {/* AREA 3: About, skills, timeline, stats, services */}
         <section
           ref={detailsRef}
-          className="bento-grid grid grid-cols-1 md:grid-cols-4 gap-6 mt-16"
+          className="bento-grid grid grid-cols-1 md:grid-cols-4 gap-6 mt-16 scroll-mt-24"
         >
           <Aboutme />
           <DeveloperProfile />
