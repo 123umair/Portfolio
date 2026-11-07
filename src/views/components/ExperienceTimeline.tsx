@@ -25,14 +25,14 @@ export const ExperienceTimeline: React.FC = () => {
           </svg>
         </div>
 
-        <div className="max-w-md">
+        <div className="max-w-md pl-12">
           <h2 className="text-3xl md:text-5xl font-extrabold text-white leading-tight transition-colors duration-300 group-hover:text-[#e2481b]">
             Let's <br />
             work <span className="text-[#e2481b]">together.</span>
           </h2>
         </div>
 
-        <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-x-3 gap-y-1 text-xs font-mono text-gray-400">
+        <div className="mt-6 pl-12 flex flex-col sm:flex-row sm:items-center gap-x-3 gap-y-1 text-xs font-mono text-gray-400">
           <span className="truncate min-w-0">{profile.email}</span>
           <span className="shrink-0 whitespace-nowrap text-[#10b981] group-hover:translate-x-1 transition-transform duration-300">
             click to mail →
