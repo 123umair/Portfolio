@@ -31,7 +31,7 @@ export const Home: React.FC = () => {
         {/* AREA 1: Who I am + Terminal */}
         <section
           ref={introRef}
-          className="bento-grid grid grid-cols-1 md:grid-cols-4 gap-6 mt-6 scroll-mt-24"
+          className="bento-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 scroll-mt-24"
         >
           <HeroCard />
           <CredentialsCard />
@@ -57,7 +57,7 @@ export const Home: React.FC = () => {
         {/* AREA 3: About, skills, timeline, stats, services */}
         <section
           ref={detailsRef}
-          className="bento-grid grid grid-cols-1 md:grid-cols-4 gap-6 mt-16 scroll-mt-24"
+          className="bento-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 scroll-mt-24"
         >
           <Aboutme />
           <DeveloperProfile />

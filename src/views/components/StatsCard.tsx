@@ -4,7 +4,7 @@ import { experienceEvents } from '../../models/experience';
 
 export const StatsCard: React.FC = () => {
   return (
-    <Card className="col-span-1 md:col-span-2 flex flex-col justify-between min-h-62.5 p-6" id="experience">
+    <Card className="md:col-span-1 lg:col-span-2 flex flex-col justify-between min-h-62.5 p-6" id="experience">
       <div>
         <span className="text-[10px] uppercase tracking-widest text-gray-500">Journey</span>
         <h3 className="text-lg font-bold text-white mt-1 mb-6">Experience</h3>

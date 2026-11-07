@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, ArrowIcon } from './Card';
+import { Card } from './Card';
 import { profile } from '../../models/profile';
 import { useClipboardFeedback } from '../../controllers/useClipboardFeedback';
 
@@ -63,7 +63,6 @@ export const DeveloperProfile: React.FC = () => {
           {copied ? '✓ copied to clipboard' : profile.email}
         </button>
       </div>
-      <ArrowIcon />
     </Card>
   );
 };

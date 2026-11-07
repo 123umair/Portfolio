@@ -5,8 +5,8 @@ import { profile, mailtoLink } from '../../models/profile';
 /** CTA card — the whole card opens an email to the real address */
 export const ExperienceTimeline: React.FC = () => {
   return (
-    <a href={mailtoLink} aria-label={`Email ${profile.name}`} className="block outline-none">
-      <Card className="col-span-1 md:col-span-2 flex flex-col justify-end min-h-60 p-10 hover:shadow-[0_10px_40px_rgba(226,72,27,0.08)]">
+    <a href={mailtoLink} aria-label={`Email ${profile.name}`} className="block col-span-1 md:col-span-2 outline-none">
+      <Card className="flex flex-col justify-end min-h-60 p-10 hover:shadow-[0_10px_40px_rgba(226,72,27,0.08)]">
         {/* Decorative Star Icon on Top Left of Content */}
         <div className="absolute top-10 left-10 text-gray-500 transition-colors duration-300 group-hover:text-[#e2481b]">
           <svg
@@ -32,9 +32,9 @@ export const ExperienceTimeline: React.FC = () => {
           </h2>
         </div>
 
-        <div className="mt-6 flex items-center gap-3 text-xs font-mono text-gray-400">
-          <span>{profile.email}</span>
-          <span className="text-[#10b981] group-hover:translate-x-1 transition-transform duration-300">
+        <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-x-3 gap-y-1 text-xs font-mono text-gray-400">
+          <span className="truncate min-w-0">{profile.email}</span>
+          <span className="shrink-0 whitespace-nowrap text-[#10b981] group-hover:translate-x-1 transition-transform duration-300">
             click to mail →
           </span>
         </div>

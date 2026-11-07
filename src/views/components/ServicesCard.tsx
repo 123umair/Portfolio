@@ -4,7 +4,7 @@ import { techStack } from '../../models/techStack';
 
 export const ServicesCard: React.FC = () => {
   return (
-    <Card className="col-span-1 md:col-span-2 flex flex-col justify-between min-h-[250px]" id="stack">
+    <Card className="md:col-span-1 lg:col-span-2 flex flex-col justify-between min-h-[250px]" id="stack">
       <div>
         <span className="text-[10px] uppercase tracking-widest text-gray-500">Core Engine</span>
         <h3 className="text-lg font-bold text-white mt-1">Tech Stack</h3>
