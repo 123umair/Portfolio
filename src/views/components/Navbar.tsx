@@ -33,7 +33,7 @@ export const Navbar: React.FC = () => {
       <div className="flex items-center gap-2">
         <a
           href={mailtoLink}
-          className="bg-[#121212] border border-[#1a1a1a] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-[#10b981] hover:text-black hover:border-[#10b981] transition-all duration-300"
+          className="hidden md:inline-flex bg-[#121212] border border-[#1a1a1a] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-[#10b981] hover:text-black hover:border-[#10b981] transition-all duration-300"
         >
           Let's Connect
         </a>
@@ -43,7 +43,7 @@ export const Navbar: React.FC = () => {
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
-          className="md:hidden w-10 h-10 rounded-full bg-[#121212] border border-[#1a1a1a] flex items-center justify-center text-gray-300 hover:text-[#10b981] hover:border-[#10b981] transition-colors"
+          className="md:hidden w-10 h-10 rounded-full bg-[#121212] border border-[#1a1a1a] flex items-center justify-center text-gray-300 hover:text-[#10b981] hover:border-[#10b981] transition-all duration-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="w-5 h-5"
+            className={`w-5 h-5 transition-transform duration-300 ${open ? 'rotate-90' : ''}`}
           >
             {open ? (
               <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
@@ -62,15 +62,16 @@ export const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Mobile dropdown (animated) */}
       {open && (
-        <div className="absolute top-full inset-x-0 mt-2 md:hidden bg-[#0d0d0d] border border-[#1a1a1a] rounded-2xl p-2 flex flex-col shadow-2xl shadow-black/60">
-          {NAV_LINKS.map((link) => (
+        <div className="menu-panel absolute top-full inset-x-0 mt-2 md:hidden bg-[#0d0d0d] border border-[#1a1a1a] rounded-2xl p-2 flex flex-col shadow-2xl shadow-black/60">
+          {NAV_LINKS.map((link, i) => (
             <a
               key={link.id}
               href={`#${link.id}`}
               onClick={() => setOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+              style={{ '--i': i } as React.CSSProperties}
+              className={`menu-item px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                 active === link.id
                   ? 'text-[#10b981] bg-[#10b981]/5'
                   : 'text-gray-300 hover:text-white hover:bg-[#141414]'
@@ -82,9 +83,20 @@ export const Navbar: React.FC = () => {
           <a
             href={`mailto:${profile.email}`}
             onClick={() => setOpen(false)}
-            className="px-4 py-3 mt-1 rounded-xl text-sm font-semibold text-black bg-[#10b981] hover:bg-[#34d399] transition-colors"
+            style={{ '--i': NAV_LINKS.length } as React.CSSProperties}
+            className="menu-item flex items-center justify-center gap-2 mt-2 px-4 py-3 rounded-full text-sm font-semibold text-black bg-[#10b981] hover:bg-[#34d399] transition-colors"
           >
-            {profile.email}
+            Let's Connect
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
           </a>
         </div>
       )}

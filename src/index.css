@@ -107,6 +107,33 @@ html {
   .signal-pulse { display: none; }
 }
 
+/* ─── Mobile menu: drop-in panel + staggered items ─── */
+
+.menu-panel {
+  transform-origin: top center;
+  animation: menu-drop 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes menu-drop {
+  from { opacity: 0; transform: translateY(-10px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.menu-item {
+  animation: menu-item-in 0.35s ease-out both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+@keyframes menu-item-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-panel,
+  .menu-item { animation: none; }
+}
+
 /* ─── TradeNest "building / coming soon" preview ─── */
 
 .scan-line {
