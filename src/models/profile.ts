@@ -9,8 +9,7 @@ export const profile = {
   email: 'uk685994@gmail.com',
   location: 'Rawalpindi, PK',
   github: 'https://github.com/123umair',
-  // TODO: add your LinkedIn URL here to show the LinkedIn icon in Profiles card
-  linkedin: null as string | null,
+  linkedin: 'https://www.linkedin.com/in/umair-khan-628ba934a/',
   avatar: '/umair.jpg',
   headline: 'MERN Stack Developer',
   tagline:

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from './Card';
 import { profile } from '../../models/profile';
+import { MapPin } from 'lucide-react';
 
 export const HeroCard: React.FC = () => {
   return (
@@ -47,8 +48,9 @@ export const HeroCard: React.FC = () => {
 
       {/* Bottom Badges */}
       <div className="flex gap-3 mt-6 flex-wrap">
-        <span className="text-[10px] bg-[#141414] border border-[#222] px-3 py-1.5 rounded-full text-gray-400 font-mono">
-          📍 {profile.location}
+        <span className="text-[10px] bg-[#141414] border border-[#222] px-3 py-1.5 rounded-full text-gray-400 font-mono flex items-center gap-1.5">
+          <MapPin className="w-3.5 h-3.5 text-[#10b981]" strokeWidth={2} />
+          {profile.location}
         </span>
         <span className="text-[10px] bg-[#141414] border border-[#222] px-3 py-1.5 rounded-full text-gray-400 font-mono flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />

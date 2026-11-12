@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from './Card';
+import { Zap } from 'lucide-react';
 
 export const CredentialsCard: React.FC = () => {
   return (
@@ -22,7 +23,10 @@ export const CredentialsCard: React.FC = () => {
         </div>
         <div>
           <span className="text-gray-500">$</span> <span className="text-[#10b981]">currently</span>
-          <p className="text-[#10b981] mt-1 animate-pulse">⚡ Building scalable applications</p>
+          <p className="text-[#10b981] mt-1 animate-pulse flex items-center gap-1.5">
+            <Zap className="w-3.5 h-3.5" strokeWidth={2.5} />
+            Building scalable applications
+          </p>
         </div>
       </div>
     </Card>
