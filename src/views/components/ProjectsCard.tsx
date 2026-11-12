@@ -144,9 +144,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, outerRef }) => {
         </div>
       </Card>
 
-      {/* Connector nodes: ports where the grid mid-line meets the card */}
-      <span className="connector-node connector-node--left" aria-hidden="true" />
-      <span className="connector-node connector-node--right" aria-hidden="true" />
+      {/* Connector nodes: ports where the signal line meets the card */}
+      {/* Desktop: horizontal line → ports on left/right edges */}
+      <span className="connector-node connector-node--left hidden md:block" aria-hidden="true" />
+      <span className="connector-node connector-node--right hidden md:block" aria-hidden="true" />
+      {/* Mobile: vertical spine → ports on top/bottom edges */}
+      <span className="connector-node connector-node--top md:hidden" aria-hidden="true" />
+      <span className="connector-node connector-node--bottom md:hidden" aria-hidden="true" />
     </div>
   );
 };
@@ -173,6 +177,8 @@ export const ProjectsCard: React.FC = () => {
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [rows, setRows] = useState<RowLine[]>([]);
   const [elbows, setElbows] = useState<ElbowTrace[]>([]);
+  // Mobile layout: cards stack in one column → a vertical spine runs down the center
+  const [spine, setSpine] = useState<{ x: number; y1: number; y2: number } | null>(null);
 
   useEffect(() => {
     const compute = () => {
@@ -187,6 +193,8 @@ export const ProjectsCard: React.FC = () => {
           return {
             left: r.left - g.left,
             right: r.right - g.left,
+            top: r.top - g.top,
+            bottom: r.bottom - g.top,
             midY: r.top - g.top + r.height / 2,
           };
         });
@@ -205,6 +213,19 @@ export const ProjectsCard: React.FC = () => {
         }
       }
       grouped.push(current);
+
+      // Mobile (stacked): one vertical spine through the center, top → bottom
+      if (grouped.length === cards.length) {
+        setRows([]);
+        setElbows([]);
+        setSpine({
+          x: (cards[0].left + cards[0].right) / 2,
+          y1: Math.min(...cards.map((c) => c.top)),
+          y2: Math.max(...cards.map((c) => c.bottom)),
+        });
+        return;
+      }
+      setSpine(null);
 
       const rowLines: RowLine[] = grouped.map((row, i) => {
         const x1 = Math.min(...row.map((c) => c.left));
@@ -251,7 +272,37 @@ export const ProjectsCard: React.FC = () => {
         width="100%"
         height="100%"
       >
-        {/* Mid line through the middle of every grid row */}
+        {/* MOBILE: vertical spine down the center, signal flows top → bottom */}
+        {spine && (
+          <g>
+            <line
+              x1={spine.x}
+              y1={spine.y1}
+              x2={spine.x}
+              y2={spine.y2}
+              className="signal-base"
+            />
+            <line
+              x1={spine.x}
+              y1={spine.y1}
+              x2={spine.x}
+              y2={spine.y2}
+              className="signal-flow"
+            />
+            {[0, 2.6].map((begin, i) => (
+              <circle key={i} r="3.5" className="signal-pulse">
+                <animateMotion
+                  dur="5.2s"
+                  begin={`${begin}s`}
+                  repeatCount="indefinite"
+                  path={`M ${spine.x} ${spine.y1} L ${spine.x} ${spine.y2}`}
+                />
+              </circle>
+            ))}
+          </g>
+        )}
+
+        {/* DESKTOP: Mid line through the middle of every grid row */}
         {rows.map((row, i) => (
           <g key={row.key}>
             <line

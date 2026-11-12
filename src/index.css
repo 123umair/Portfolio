@@ -82,6 +82,20 @@ html {
 .connector-node--left  { left: -4px; }
 .connector-node--right { right: -4px; }
 
+/* Mobile ports: vertical spine enters top-center / leaves bottom-center */
+.connector-node--top {
+  top: -4px;
+  left: 50%;
+  margin: 0 0 0 -4px;
+}
+
+.connector-node--bottom {
+  top: auto;
+  bottom: -4px;
+  left: 50%;
+  margin: 0 0 0 -4px;
+}
+
 @keyframes node-pulse {
   0%, 100% { box-shadow: 0 0 4px 1px rgba(16, 185, 129, 0.35); }
   50%      { box-shadow: 0 0 9px 3px rgba(16, 185, 129, 0.7); }
